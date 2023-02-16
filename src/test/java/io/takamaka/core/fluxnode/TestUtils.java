@@ -2,20 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package io.takamaka.core.fluxnode.domain;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+package io.takamaka.core.fluxnode;
 
 /**
  *
  * @author Giovanni Antino giovanni.antino@takamaka.io
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class HelloWorldBean {
+public class TestUtils {
 
-    private String message;
+    public static final String HELLO_BASE_URI = "/helloworld";
 }
