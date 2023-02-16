@@ -48,7 +48,9 @@ public class HelloRouterTest {
                 .expectBody(HelloWorldBean.class)
                 .consumeWith((t) -> {
                     HelloWorldBean responseBody = t.getResponseBody();
-                    assert (responseBody.getMessage().equals("I'm a teapot"));
+                    assert (responseBody != null);
+                    assert (responseBody.getMessage() != null);
+                    assert ("I'm a teapot".equals(responseBody.getMessage()));
                 });
     }
 
