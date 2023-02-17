@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.takamaka.core</groupId>
     <artifactId>fluxnode</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>fluxnode</name>
     <description>Flux version of the full takamaka client</description>
     <properties>
@@ -57,6 +57,16 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <type>jar</type>
         </dependency>
     </dependencies>
 

@@ -26,7 +26,9 @@ public class HelloRouter {
                 .nest(path("/helloworld"),
                         (builder) -> {
                             builder
-                                    .GET("/makemeacoffee", (request) -> helloWorldHandler.makeMeACoffee(request));
+                                    .GET("/makemeacoffee", (request) -> helloWorldHandler.makeMeACoffee(request))
+                                    .GET("/makemeanadmincoffee", (request) -> helloWorldHandler.makeMeAnAdminCoffee(request))
+                                    .GET("/makemeausercoffee", (request) -> helloWorldHandler.makeMeAnAdminCoffee(request));
                         }).build();
     }
 

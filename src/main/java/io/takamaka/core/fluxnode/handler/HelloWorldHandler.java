@@ -23,4 +23,12 @@ public class HelloWorldHandler {
     public Mono<ServerResponse> makeMeACoffee(ServerRequest request) {
         return ServerResponse.status(HttpStatus.I_AM_A_TEAPOT).bodyValue(new HelloWorldBean("I'm a teapot"));
     }
+    
+    public Mono<ServerResponse> makeMeAnAdminCoffee(ServerRequest request) {
+        return ServerResponse.status(HttpStatus.I_AM_A_TEAPOT).bodyValue(new HelloWorldBean("I'm an admin teapot"));
+    }
+    
+    public Mono<ServerResponse> makeMeAUserCoffee(ServerRequest request) {
+        return ServerResponse.status(HttpStatus.I_AM_A_TEAPOT).bodyValue(new HelloWorldBean("I'm a user teapot"));
+    }
 }
