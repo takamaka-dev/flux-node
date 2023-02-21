@@ -4,6 +4,7 @@
  */
 package io.takamaka.core.fluxnode.security;
 
+import io.takamaka.wallet.utils.FileHelper;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 import lombok.extern.slf4j.Slf4j;
@@ -57,59 +58,33 @@ public class SecurityConfig {
                 .httpBasic();
         return http.build();
     }
-//    @Order(Ordered.HIGHEST_PRECEDENCE)
-//    @Bean
-//    SecurityWebFilterChain apiHttpSecurity(ServerHttpSecurity http) {
-//        http
-//                .authorizeExchange()
-//                .pathMatchers(
-//                        "/helloworld/makemeanadmincoffee"
-//                )
-//                .hasRole("ADMIN")
-//                .pathMatchers(
-//                        "/helloworld/makemeacoffee"
-//                )
-////                .authenticated()
-//                .permitAll()
-//                .and().csrf((csrf) -> csrf.disable())
-//                .httpBasic();
-////        http
-////                .securityMatcher(
-////                        new PathPatternParserServerWebExchangeMatcher("/manage/**")
-////                ).securityMatcher(new PathPatternParserServerWebExchangeMatcher("/helloworld/admin/**"))
-////                .authorizeExchange((exchanges) -> exchanges
-////                .anyExchange().hasRole("ADMIN").authenticated().and().httpBasic()
-////                )
-////                .oauth2ResourceServer(OAuth2ResourceServerSpec::jwt);
-//        return http.build();
-//    }
 
     @Bean
     public MapReactiveUserDetailsService userDetailsService() {
+        log.info("Loading env");
+
+        //if(FileHelper.fileExists())
         ConcurrentSkipListMap<String, UserDetails> users = new ConcurrentSkipListMap<>();
+        //        log.info(encoder.encode("admin_password"));
         UserDetails admin = User.withUsername("admin")
                 .password("{bcrypt}$2a$10$csgn3rKfs5nbxnp/fEC93..0ZBk8ud7NdHFeziW/N4dhc.vlsDj7y")
-                .roles("ADMIN")
+                .roles("ADMIN", "USER")
                 .build();
+        //        log.info(encoder.encode("user_password"));
         UserDetails user = User.withUsername("user")
                 .password("{bcrypt}$2a$10$n8r/ZKeL984X7cnI9ottVePGNKKZcWmwbvEVydOZcF4WerQJrf7zW")
                 .roles("USER")
                 .build();
         users.put("admin", admin);
         users.put("user", user);
-//        UserDetails admin = User.withDefaultPasswordEncoder()
-//                .username("admin")
-//                .password("admin_password")
-//                .roles("ADMIN")
-//                .build();
         return new MapReactiveUserDetailsService(users.values());
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        log.info(encoder.encode("admin_password"));
-        log.info(encoder.encode("user_password"));
+//        log.info(encoder.encode("admin_password"));
+
         return encoder;
     }
 
