@@ -7,18 +7,13 @@ package io.takamaka.core.fluxnode.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.takamaka.core.fluxnode.domain.UserPasswordBean;
 import io.takamaka.wallet.utils.FileHelper;
-import io.takamaka.wallet.utils.TkmTextUtils;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  *
