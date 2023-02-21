@@ -18,10 +18,15 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserPasswordBean {
+public class UserPasswordBean implements Comparable<UserPasswordBean> {
 
     private String username;
     private List<String> roles;
     private String password;
+
+    @Override
+    public int compareTo(UserPasswordBean o) {
+        return username.compareTo(o.username);
+    }
 
 }
