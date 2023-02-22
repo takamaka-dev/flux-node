@@ -4,6 +4,7 @@
  */
 package io.takamaka.core.fluxnode.domain;
 
+import io.takamaka.core.fluxnode.utils.FNU.WEB_ROLES;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserPasswordBean implements Comparable<UserPasswordBean> {
 
     private String username;
-    private List<String> roles;
+    private List<WEB_ROLES> roles;
     private String password;
 
     @Override

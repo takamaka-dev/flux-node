@@ -1,5 +1,6 @@
 package io.takamaka.core.fluxnode;
 
+import io.takamaka.core.fluxnode.exceptions.FNUException;
 import io.takamaka.core.fluxnode.utils.FNU;
 import io.takamaka.wallet.utils.FileHelper;
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class FluxnodeApplication {
         try {
             FileHelper.initProjectFiles();
             FNU.initFluxFiles();
-        } catch (IOException ex) {
+        } catch (IOException | FNUException ex) {
             log.error("Init faliure ", ex);
             throw new RuntimeException("initialization error", ex);
         }

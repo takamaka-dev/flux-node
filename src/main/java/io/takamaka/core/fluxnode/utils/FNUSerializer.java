@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import io.takamaka.core.fluxnode.domain.UserPasswordBean;
 import io.takamaka.wallet.utils.TkmTextUtils;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -18,7 +19,7 @@ import java.util.Set;
 public class FNUSerializer {
 
     // UserPasswordBean
-    public static final TypeReference<Set<UserPasswordBean>> type_setUserPasswordBean = new TypeReference<>() {
+    public static final TypeReference<Map<String, UserPasswordBean>> type_mapUserPasswordBean = new TypeReference<>() {
     };
 
     public static final String userPasswordBeanToJson(UserPasswordBean upb) throws JsonProcessingException {
@@ -29,12 +30,12 @@ public class FNUSerializer {
         return TkmTextUtils.getJacksonMapper().readValue(upbJson, UserPasswordBean.class);
     }
 
-    public static final String userPasswordBeanListToJson(Set<UserPasswordBean> upbList) throws JsonProcessingException {
-        return TkmTextUtils.getJacksonMapper().writerWithDefaultPrettyPrinter().writeValueAsString(upbList);
+    public static final String userPasswordBeanMapToJson(Map<String, UserPasswordBean> upbMap) throws JsonProcessingException {
+        return TkmTextUtils.getJacksonMapper().writerWithDefaultPrettyPrinter().writeValueAsString(upbMap);
     }
 
-    public static final Set<UserPasswordBean> getUserPasswordBeanList(String upbJsonList) throws JsonProcessingException {
-        return TkmTextUtils.getJacksonMapper().readValue(upbJsonList, type_setUserPasswordBean);
+    public static final Map<String, UserPasswordBean> getUserPasswordBeanMap(String upbJsonMap) throws JsonProcessingException {
+        return TkmTextUtils.getJacksonMapper().readValue(upbJsonMap, type_mapUserPasswordBean);
     }
 
 }
