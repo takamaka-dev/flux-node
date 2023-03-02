@@ -28,7 +28,7 @@ public class HelloRouter {
                             builder
                                     .GET("/makemeacoffee", (request) -> helloWorldHandler.makeMeACoffee(request))
                                     .GET("/makemeanadmincoffee", (request) -> helloWorldHandler.makeMeAnAdminCoffee(request))
-                                    .GET("/makemeausercoffee", (request) -> helloWorldHandler.makeMeAnAdminCoffee(request));
+                                    .GET("/makemeausercoffee", (request) -> helloWorldHandler.makeMeAUserCoffee(request));
                         }).build();
     }
 
